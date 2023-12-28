@@ -52,11 +52,14 @@ const [status, setStatus] = useState('');
             <div >
                 <label htmlFor="username" >
                     Enter your name
-                    <input type="text" name="username" id="username"
-                        placeholder="Enter your name"
-                           value={user.username}
-                           onChange={handleChange}
-                           required
+                    <input 
+                     type="text"
+                     name="username"
+                     id="username"
+                     placeholder="Enter your name"
+                    value={user.username}
+                    onChange={handleChange}
+                    required
                     />
                 </label>
             </div>

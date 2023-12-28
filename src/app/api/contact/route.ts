@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic' // defaults to auto
+export const dynamic = 'force-dynamic'
 import dbConn from '@/backend/dbconnect';
 import Contact from "@/backend/models/contact";
 import {NextResponse} from "next/server";
