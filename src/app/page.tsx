@@ -1,95 +1,114 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import React, { useState } from 'react'
 
-export default function Home() {
+const Page = () => {
+  const[user, setUser] = useState({
+    username:"",
+    email:"",
+    phone:"",
+    message:""
+})
+function handleChange(e:any) {
+  const name = e.target.name;
+  const value = e.target.value;
+
+  setUser((prevUser) => ({...prevUser, [name] : value}));
+}
+const [status, setStatus] = useState('');
+  const handleSubmit = async (e:any) => {
+    e.preventDefault();
+    try{
+          const response = await fetch('/api/contact', {
+              method:'POST',
+              headers:{"Content_Type":"application/json"},
+              body: JSON.stringify({
+                  username:user.username,
+                  email:user.email,
+                  phone:user.phone,
+                  message:user.message
+              })
+          })
+          // Set the status based on the response from the API route
+          if (response.status === 200) {
+              setUser({
+                  username: "",
+                  email: "",
+                  phone: "",
+                  message: ""
+              })
+              setStatus("success");
+          } else {
+              setStatus("failed");
+          }
+
+    }catch(e){
+   
+    }
+  }
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div>
+      <h1>Hello world</h1>
+      <form  onSubmit={handleSubmit}>
+            <div >
+                <label htmlFor="username" >
+                    Enter your name
+                    <input type="text" name="username" id="username"
+                        placeholder="Enter your name"
+                           value={user.username}
+                           onChange={handleChange}
+                           required
+                    />
+                </label>
+            </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+            <div >
+                <label htmlFor="email" >
+                    Email
+                    <input type="text" name="email" id="email"
+                           placeholder="Enter your email"
+                           value={user.email}
+                           onChange={handleChange}
+                           required
+                           autoComplete="off"
+                    />
+                </label>
+            </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+            <div >
+                <label htmlFor="phone">
+                    Phone Number
+                    <input type="number" name="phone" id="phone"
+                           placeholder="Enter your phone"
+                           value={user.phone}
+                           onChange={handleChange}
+                           required
+                            autoComplete="off"
+                    />
+                </label>
+            </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+            <div >
+                <label htmlFor="message" >
+                    Message
+                    <textarea  name="message" id="message" rows={5}
+                           placeholder="Enter your Message"
+                               value={user.message}
+                               onChange={handleChange}
+                               required
+                                autoComplete="off"
+                    />
+                </label>
+            </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
+            <div>
+                {status === 'success' && <p >Thank you for your message!</p>}
+                {status === 'error' && <p >There was an error submitting your message. Please try again.</p>}
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+                <button type="submit" >Send Message</button>
+            </div>
+        </form>
+    </div>
   )
 }
+
+export default Page
