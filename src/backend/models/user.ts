@@ -8,12 +8,13 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true
   },
-  role: {
+
+  email: {
     type: String,
-    enum: ['admin', 'user', 'author'],
-    required: true
+  },
+  imaage: {
+    type: String,
   },
 
   date: {
