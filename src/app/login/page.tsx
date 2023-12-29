@@ -32,6 +32,11 @@ export default function Login() {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
+      signIn('credentials',{
+        username:user.username,
+        password:user.password,
+        redirect:false
+      })
     } catch (e) {
       console.log(e);
       setMessage("Server Error , Please Try Again");

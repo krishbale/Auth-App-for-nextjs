@@ -49,7 +49,10 @@ userSchema.methods.generateAuthToken = async function () {
     console.log(err)
   }
 }
-
-const User = mongoose.models.User 
-|| mongoose.model('USER', userSchema)
-export default User
+let User:any;
+try {
+  User = mongoose.model("User");
+} catch {
+  User = mongoose.model("User", userSchema);
+}
+export default User;
