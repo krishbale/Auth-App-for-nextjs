@@ -1,7 +1,5 @@
 import mongoose, { SchemaOptions } from "mongoose";
 
-
-
 const contactSchema = new mongoose.Schema(
     {
         username: {
