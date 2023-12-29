@@ -5,8 +5,8 @@ import { signIn, signOut } from "next-auth/react";
 
 export default function Login() {
   const { data: session, status } = useSession();
-  console.log("status", status);
-  console.log("session", session);
+  // console.log("status", status);
+  // console.log("session", session);
 
   const [user, setUser] = useState({
     username: "",
@@ -17,7 +17,7 @@ export default function Login() {
     return (
       <>
         <h1>{session.user && session.user.email}</h1>
-        <button onClick={() => signOut()}>Sign out by click event</button>
+        <button onClick={() => signOut()}>Sign out </button>
       </>
     );
   }
