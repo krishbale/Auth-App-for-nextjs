@@ -38,9 +38,10 @@ export default function Login() {
         redirect:false
       })
     } catch (e) {
-      console.log(e);
       setMessage("Server Error , Please Try Again");
     }
+    setMessage("Email or Password is Invalid, Try Again");
+    return { error:"something went wrong"}
   };
 
   return (

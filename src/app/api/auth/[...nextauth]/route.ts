@@ -23,7 +23,6 @@ export const authOptions: NextAuthOptions = {
         password: {},
       },
       async authorize(credentials) {
-        console.log(credentials);
         await dbConnect();
         const user = await User.findOne({ username: credentials!.username });
         if (!user) {
@@ -41,6 +40,8 @@ export const authOptions: NextAuthOptions = {
             image: user.image,
           }
         }
+        if(!isMatch) throw new Error("Not a valid credentials");
+
         return null;
       },
     }),
@@ -72,7 +73,6 @@ export const authOptions: NextAuthOptions = {
         await dbConnect();
         try {
           const user = await User.findOne({ email: profile!.email });
-          console.log(profile)
            //@ts-ignore
         const imageUrl:string = profile!.picture;
           if (!user) {
@@ -91,7 +91,9 @@ export const authOptions: NextAuthOptions = {
       }
       return true;
     },
+   
   },
+
   secret: process.env.NEXTAUTH_SECRET as string,
 };
 
