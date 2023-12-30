@@ -9,37 +9,15 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
   },
-
   email: {
     type: String,
   },
   image: {
     type: String,
   },
-
-  date: {
-    type: Date,
-    Default: Date.now
-  },
-
-  tokens: [
-    {
-      token: {
-        type: String,
-        required: true
-
-      }
-
-    }
-
-  ]
-
-})
-
-
+}, { timestamps: true });
 
 userSchema.methods.generateAuthToken = async function () {
-
   try {
     const token = jwt.sign({ _id: this._id, role: this.role }, process.env.SECRECT_KEY!)
     this.tokens = this.tokens.concat({ token })
@@ -49,6 +27,7 @@ userSchema.methods.generateAuthToken = async function () {
     console.log(err)
   }
 }
+
 let User:any;
 try {
   User = mongoose.model("User");

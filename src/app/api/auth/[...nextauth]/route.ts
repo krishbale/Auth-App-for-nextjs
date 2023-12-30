@@ -11,6 +11,7 @@ export const authOptions: NextAuthOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_ID!,
       clientSecret: process.env.GITHUB_SECRET!,
+ 
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -47,15 +48,17 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account, profile }) {
       if (account!.provider === "github") {
+        //@ts-ignore
+        const imageUrl:string = profile!.avatar_url;
+        console.log(imageUrl);
         await dbConnect();
         try {
           const user = await User.findOne({ email: profile!.email });
-
           if (!user) {
             const newUser = new User({
               username: profile?.name,
               email: profile!.email,
-              image: profile!.image,
+              image:imageUrl
             });
 
             await newUser.save();
@@ -69,7 +72,6 @@ export const authOptions: NextAuthOptions = {
         await dbConnect();
         try {
           const user = await User.findOne({ email: profile!.email });
-
           if (!user) {
             const newUser = new User({
               username: profile?.name,
