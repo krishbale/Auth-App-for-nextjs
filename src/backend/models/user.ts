@@ -16,6 +16,11 @@ const userSchema = new mongoose.Schema({
   image: {
     type: String,
   },
+  role: {
+    type: String,
+    enum: ['admin', 'author', 'user'],
+    default: 'admin',
+  },
 }, { timestamps: true });
 
 userSchema.methods.generateAuthToken = async function () {

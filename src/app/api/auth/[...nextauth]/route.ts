@@ -33,12 +33,7 @@ export const authOptions: NextAuthOptions = {
           user.password
         );
         if (isMatch) {
-          return {
-            id: user._id,
-            name: user.username,
-            email: user.email,
-            image: user.image,
-          }
+           return user;
         }
         if(!isMatch) throw new Error("Not a valid credentials");
 
@@ -51,7 +46,6 @@ export const authOptions: NextAuthOptions = {
       if (account!.provider === "github") {
         //@ts-ignore
         const imageUrl:string = profile!.avatar_url;
-        console.log(imageUrl);
         await dbConnect();
         try {
           const user = await User.findOne({ email: profile!.email });
@@ -59,7 +53,8 @@ export const authOptions: NextAuthOptions = {
             const newUser = new User({
               username: profile?.name,
               email: profile!.email,
-              image:imageUrl
+              image:imageUrl,
+              role: "author",
             });
 
             await newUser.save();
@@ -79,7 +74,8 @@ export const authOptions: NextAuthOptions = {
             const newUser = new User({
               username: profile?.name,
               email: profile!.email,
-              image: imageUrl
+              image: imageUrl,
+              role: "user",
             });
 
             await newUser.save();
@@ -91,8 +87,30 @@ export const authOptions: NextAuthOptions = {
       }
       return true;
     },
+    async jwt({ token, user }) {
+      if (user) {
+        await dbConnect();
+        const DBUSER = await User.findOne({ email: user.email });
+        token.id = user.id;
+        token.role = DBUSER!.role;
+      }
+      return Promise.resolve(token);
+    },
+    async session({ session, token }) {
+      if (token) {
+          //@ts-ignore
+        session.user.id = token.id;
+          //@ts-ignore
+        session.user.role = token.role;
+      }
+      return session;
+    },
    
   },
+  pages: {
+    signIn: "/login",
+  },
+
 
   secret: process.env.NEXTAUTH_SECRET as string,
 };

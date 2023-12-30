@@ -40,7 +40,6 @@ export default function Login() {
     } catch (e) {
       setMessage("Server Error , Please Try Again");
     }
-    setMessage("Email or Password is Invalid, Try Again");
     return { error:"something went wrong"}
   };
 
