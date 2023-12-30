@@ -5,9 +5,9 @@ export default function Register() {
     const[user, setUser] = useState({
         username:"",
         password:"",
-        role:"user",
+        email:""
     })
-    const [status, setStatus] = useState('');
+    const [message, setMessage] = useState('');
     function handleChange(e:any) {
         const name = e.target.name;
         const value = e.target.value;
@@ -26,22 +26,19 @@ export default function Register() {
                 body: JSON.stringify({ 
                     username:user.username,
                     password:user.password,
-                    role:user.role
+                    email:user.email
                 }),
             });
-    
-            if (response.ok) {
-                console.log("Registration successful");
-                setStatus("success");
-                // Redirect or update UI accordingly
+            const data = await response.json();
+            if ( response.status === 200) {
+                setMessage(data.message);
             } else {
                 console.error("Registration failed");
-                setStatus("failed");
-                // Handle errors (e.g., display error message)
+                setMessage(data.message);
             }
         }catch(e){
             console.log(e)
-            setStatus("failed");
+            setMessage("Error Submitting Request . Please try Again");
         }
        
     };
@@ -63,6 +60,18 @@ export default function Register() {
                     />
                 </div>
                 <div>
+                    <label htmlFor="email">email</label>
+                    <input
+                        type="text"
+                        id="email"
+                        name='email'
+                        placeholder='Enter your email'
+                        value={user.email}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div>
                     <label htmlFor="password">Password</label>
                     <input
                         type="password"
@@ -74,20 +83,8 @@ export default function Register() {
                         required
                     />
                 </div>
-                <div>
-                    <label htmlFor="role">Role</label>
-                    <select id="role" name='role'  value={user.role}
-                         onChange={handleChange} required>
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
-                        <option value="author">Author</option>
-                    </select>
-                </div>
-                {status === '200' && <p >Register Successfull</p>}
-                {status === '404' && <p >No Please try again.</p>}
-                {status === '422' && <p >There was an error submitting your message. Please try again.</p>}
-                {status === '500' && <p >There was an error submitting your message. Please try again.</p>}
-
+              
+               <p>{message}</p>
                 <button type="submit">Register</button>
             </form>
         </div>

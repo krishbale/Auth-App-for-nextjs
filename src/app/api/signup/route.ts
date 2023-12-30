@@ -12,13 +12,12 @@ export async function POST(req: any, res: any) {
       { status: 422 }
     );
   }
-  console.log(username, password);
   await dbConn();
   const user = await User.findOne({ username });
-  console.log("user", user);
-  if (user) {
+  const checkEmail = await User.findOne({ email: body.email });
+  if (user || checkEmail) {
     return NextResponse.json(
-      { message: "User already exists" },
+      { message: "username or email is already taken" },
       { status: 422 }
     );
   }
@@ -27,12 +26,15 @@ export async function POST(req: any, res: any) {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(body.password, salt);
     body.password = hashedPassword;
-    
     await User.create(body);
-    return NextResponse.json({
-      status: 200,
-    });
+
+    return NextResponse.json(
+      { message: "User Registeration successfull" },
+      { status: 200 }
+    );
   } catch (e) {
-    return NextResponse.json({ status: 500 });
+    return NextResponse.json( { message: "Internal Server Error" },
+    { status: 500 }
+  );
   }
 }

@@ -72,11 +72,14 @@ export const authOptions: NextAuthOptions = {
         await dbConnect();
         try {
           const user = await User.findOne({ email: profile!.email });
+          console.log(profile)
+           //@ts-ignore
+        const imageUrl:string = profile!.picture;
           if (!user) {
             const newUser = new User({
               username: profile?.name,
               email: profile!.email,
-              image: profile!.image,
+              image: imageUrl
             });
 
             await newUser.save();
