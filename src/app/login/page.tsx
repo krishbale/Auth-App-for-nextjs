@@ -5,8 +5,8 @@ import { signIn, signOut } from "next-auth/react";
 
 export default function Login() {
   const { data: session, status } = useSession();
-  // console.log("status", status);
-  // console.log("session", session);
+  console.log("status", status);
+  console.log("session", session);
 
   const [user, setUser] = useState({
     username: "",

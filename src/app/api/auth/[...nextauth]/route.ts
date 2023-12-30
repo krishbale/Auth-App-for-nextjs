@@ -41,7 +41,9 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  callbacks: {
+  callbacks: 
+  
+  {
     async signIn({ user, account, profile }) {
       if (account!.provider === "github") {
         //@ts-ignore
@@ -105,8 +107,12 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
+    
+   
+ 
    
   },
+
   pages: {
     signIn: "/login",
   },
