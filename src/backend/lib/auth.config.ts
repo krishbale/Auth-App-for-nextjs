@@ -1,49 +1,84 @@
+import User from "../models/user";
+import dbConnect from "./dbconnect";
 
 export const authConfig = {
-    pages: {
-      signIn: "/login",
+  pages: {
+    signIn: "/login",
+  },
+
+  providers: [],
+  callbacks: {
+    //@ts-ignore
+    async jwt({ token, user }) {
+      if (user) {
+        await dbConnect();
+        const DBUSER = await User.findOne({ email: user.email });
+        token.id = user.id;
+        token.role = DBUSER!.role;
+      }
+      return Promise.resolve(token);
     },
-    providers: [],
-    callbacks: {
-      async jwt({ token, user }: { token: any, user: any }) {
-        if (user) {
-          token.id = user.id;
-          token.isAdmin = user.isAdmin;
-        }
-        return token;
-      },
-      async session({ session, token }: { session: any, token: any }) {
-        if (token) {
-          session.user.id = token.id;
-          session.user.isAdmin = token.isAdmin;
-        }
-        return session;
-      },
-      authorized({ auth, request }: { auth: any, request: any }) {
-        const user = auth?.user;
-        const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/admin");
-        const isOnBlogPage = request.nextUrl?.pathname.startsWith("/blog");
-        const isOnLoginPage = request.nextUrl?.pathname.startsWith("/login");
-  
-        // ONLY ADMIN CAN REACH THE ADMIN DASHBOARD
-  
-        if (isOnAdminPanel && !user?.isAdmin) {
-          return false;
-        }
-  
-        // ONLY AUTHENTICATED USERS CAN REACH THE BLOG PAGE
-  
-        if (isOnBlogPage && !user) {
-          return false;
-        }
-  
-        // ONLY UNAUTHENTICATED USERS CAN REACH THE LOGIN PAGE
-  
-        if (isOnLoginPage && user) {
-          return Response.redirect(new URL("/", request.nextUrl));
-        }
-  
-        return true
-      },
+    //@ts-ignore
+    async session({ session, token }) {
+      if (token) {
+        //@ts-ignore
+        session.user.id = token.id;
+        //@ts-ignore
+        session.user.role = token.role;
+      }
+      return session;
     },
-  };
+
+    // redirect({
+    //   url,
+    //   baseUrl,
+    //   user,
+    // }: {
+    //   url: string;
+    //   baseUrl: string;
+    //   user: any;
+    // }) {
+    //   if (url === "/login") {
+    //     console.log( "user",user);
+    //     // Redirect user to different pages based on their role after sign-in
+    //     switch (user.role) {
+    //       case "admin":
+    //         return Promise.resolve(baseUrl + "/admin");
+    //       case "author":
+    //         return Promise.resolve(baseUrl + "/author");
+    //       default:
+    //         return Promise.resolve(baseUrl + "/");
+    //     }
+    //   }
+    //   return Promise.resolve(url);
+    // },
+    //@ts-ignore
+    authorized({ auth, request }) {
+      const user = auth?.user;
+      const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/admin");
+      const isOnAuthorPanel = request.nextUrl?.pathname.startsWith("/author");
+      const isOnLoginPage = request.nextUrl?.pathname.startsWith("/login");
+
+      // ONLY ADMIN CAN REACH THE ADMIN DASHBOARD
+
+      if (isOnAdminPanel && user?.role !== "admin") {
+        return false;
+      }
+      if (isOnAuthorPanel && user?.role !== "author") {
+        return false;
+      }
+
+      if (isOnAuthorPanel && !user) {
+        return false;
+      }
+
+      // ONLY UNAUTHENTICATED USERS CAN REACH THE LOGIN PAGE
+
+      if (isOnLoginPage && user) {
+        return Response.redirect(new URL("/", request.nextUrl));
+      }
+
+      return true;
+    },
+  },
+};
