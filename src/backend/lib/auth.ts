@@ -6,6 +6,7 @@ import bcrypt from "bcryptjs";
 import dbConnect from "./dbconnect";
 import User from "../models/user";
 import { authConfig } from "./auth.config";
+import { validateuser } from "./action";
 export const {
     handlers: { GET, POST },
     auth,
@@ -24,26 +25,13 @@ export const {
           clientSecret: process.env.GOOGLE_SECRET_ID as string,
         }),
         CredentialsProvider({
-          credentials: {
-            username: {},
-            password: {},
-          },
           async authorize(credentials) {
-            await dbConnect();
-            const user = await User.findOne({ username: credentials!.username });
-            if (!user) {
-              throw new Error("Not a valid credentials");
+            try {
+           const user = await validateuser(credentials);
+           return user;
+            } catch (err:any) {
+              return null; 
             }
-            const isMatch = await bcrypt.compare(
-              credentials!.password as string,
-              user.password
-            );
-            if (isMatch) {
-               return user;
-            }
-            if(!isMatch) throw new Error("Not a valid credentials");
-    
-            return null;
           },
         }),
       ],

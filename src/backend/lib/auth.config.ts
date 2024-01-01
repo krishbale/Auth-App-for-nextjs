@@ -64,6 +64,7 @@ export const authConfig = {
       if (isOnAdminPanel && user?.role !== "admin") {
         return false;
       }
+    
       if (isOnAuthorPanel && user?.role !== "author") {
         return false;
       }
@@ -74,9 +75,12 @@ export const authConfig = {
 
       // ONLY UNAUTHENTICATED USERS CAN REACH THE LOGIN PAGE
 
-      if (isOnLoginPage && user) {
-        return Response.redirect(new URL("/", request.nextUrl));
+      if (user && isOnLoginPage) {
+        let home =  new URL("/", request.nextUrl)
+        return Response.redirect(home);
       }
+
+    
 
       return true;
     },
