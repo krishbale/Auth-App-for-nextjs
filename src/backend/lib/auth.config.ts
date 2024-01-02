@@ -1,5 +1,3 @@
-import User from "../models/user";
-import dbConnect from "./dbconnect";
 
 export const authConfig = {
   pages: {
@@ -11,10 +9,11 @@ export const authConfig = {
     //@ts-ignore
     async jwt({ token, user }) {
       if (user) {
-        await dbConnect();
-        const DBUSER = await User.findOne({ email: user.email });
         token.id = user.id;
-        token.role = DBUSER!.role;
+        token.role = "admin";
+        //const User = await UserModel.findById(user.id);
+        //token.role = User.role;  instead of this we hardcode the role for vercel deployment 
+        /// because of edge runtime limitations on moongose we have to hardcode the role
       }
       return Promise.resolve(token);
     },
@@ -29,29 +28,7 @@ export const authConfig = {
       return session;
     },
 
-    // redirect({
-    //   url,
-    //   baseUrl,
-    //   user,
-    // }: {
-    //   url: string;
-    //   baseUrl: string;
-    //   user: any;
-    // }) {
-    //   if (url === "/login") {
-    //     console.log( "user",user);
-    //     // Redirect user to different pages based on their role after sign-in
-    //     switch (user.role) {
-    //       case "admin":
-    //         return Promise.resolve(baseUrl + "/admin");
-    //       case "author":
-    //         return Promise.resolve(baseUrl + "/author");
-    //       default:
-    //         return Promise.resolve(baseUrl + "/");
-    //     }
-    //   }
-    //   return Promise.resolve(url);
-    // },
+
     //@ts-ignore
     authorized({ auth, request }) {
       const user = auth?.user;
