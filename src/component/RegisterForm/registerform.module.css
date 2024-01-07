@@ -5,14 +5,31 @@
     gap: 30px;
   }
   
-  .form input{
+  .form input {
     padding: 20px;
     background-color: var(--bg);
     color: var(--textColor);
     border: none;
     border-radius: 5px;
   }
-  
+.form option{
+  padding: 20px;
+  color: var(--textColor);
+  border: none;
+  border-radius: 5px;
+
+ 
+}
+
+ .form select {
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    color: var(--textColor);
+    background-color: var(--bg);
+
+  }
   .form button{
     padding: 20px;
     cursor: pointer;

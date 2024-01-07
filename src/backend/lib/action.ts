@@ -32,9 +32,8 @@ export const login = async (prevState: any, formData: FormData) => {
 };
 
 export const register = async (previousState: any, formData: FormData) => {
-  const { username, email, password, img, passwordRepeat } =
+  const { username, email, password, img, passwordRepeat,roles } =
     Object.fromEntries(formData);
-
   if (password !== passwordRepeat) {
     return { error: "Passwords do not match" };
   }
@@ -56,6 +55,7 @@ export const register = async (previousState: any, formData: FormData) => {
       email,
       password: hashedPassword,
       img,
+      role:roles,
     });
 
     await newUser.save();

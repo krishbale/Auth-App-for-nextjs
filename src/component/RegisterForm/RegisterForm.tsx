@@ -26,6 +26,12 @@ const RegisterForm = () => {
         placeholder="password again"
         name="passwordRepeat"
       />
+       <label>Select a Role:</label>
+    <select id="roles" name="roles">
+      <option  value="admin">Admin</option>
+      <option value="author">Author</option>
+      <option value="user">User</option>
+    </select>
       <button>Register</button>
       {state?.error}
       <Link href="/login">
