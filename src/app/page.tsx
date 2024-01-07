@@ -1,26 +1,23 @@
 import React from 'react'
-import Image from "next/image";
-import styles from "./page.module.css";
 
-export default function Page() {
-  <div className={styles.container}>
-      <div className={styles.textContainer}>
-        <h1 className={styles.title}>Creative Thoughts Agency.</h1>
-        <p className={styles.desc}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
-          blanditiis adipisci minima reiciendis a autem assumenda dolore.
-        </p>
-        <div className={styles.buttons}>
-          <button className={styles.button}>Learn More</button>
-          <button className={styles.button}>Contact</button>
-        </div>
-        <div className={styles.brands}>
-          <Image src="/brands.png" alt="" fill className={styles.brandImg}/>
-        </div>
+const page = () => {
+  return (
+    <div>
+      <div>
+        <h1>Next js Authentication</h1>
+        <h2>Use Credentials for route: /admin</h2>
+        <p>Username:<strong>balkrishna</strong></p>
+        <p>Password:<strong>password</strong></p>
+
       </div>
-      <div className={styles.imgContainer}>
-        <Image src="/hero.gif" alt="" fill className={styles.heroImg}/>
+      <div>
+        <h2>Use Github sign in for route /author</h2>
+      </div>
+      <div>
+        <h2>Or use google sign in only for user level access</h2>
       </div>
     </div>
- 
+  )
 }
+
+export default page

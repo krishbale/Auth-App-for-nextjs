@@ -2,7 +2,9 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>Admin</div>
+    <div>
+      <h1>This page is only accessbile for Admin</h1>
+    </div>
   )
 }
 

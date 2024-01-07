@@ -35,7 +35,11 @@ authConfig = {
       }
     
       if (isOnAuthorPanel && user?.role !== "author") {
-        return false;
+        if (user?.role === "admin") {
+          return true;
+        }else {
+          return false;
+        }
       }
 
       if (isOnAuthorPanel && !user) {
