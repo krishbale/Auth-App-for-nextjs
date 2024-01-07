@@ -6,27 +6,7 @@ export const authConfig = {
 
   providers: [],
   callbacks: {
-    //@ts-ignore
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-        token.role = "admin";
-        //const User = await UserModel.findById(user.id);
-        //token.role = User.role;  instead of this we hardcode the role for vercel deployment 
-        /// because of edge runtime limitations on moongose we have to hardcode the role
-      }
-      return Promise.resolve(token);
-    },
-    //@ts-ignore
-    async session({ session, token }) {
-      if (token) {
-        //@ts-ignore
-        session.user.id = token.id;
-        //@ts-ignore
-        session.user.role = token.role;
-      }
-      return session;
-    },
+    
 
 
     //@ts-ignore

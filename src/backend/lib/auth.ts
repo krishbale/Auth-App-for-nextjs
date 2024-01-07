@@ -2,7 +2,6 @@ import NextAuth, { NextAuthConfig } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
 import dbConnect from "./dbconnect";
 import User from "../models/user";
 import { authConfig } from "./auth.config";
@@ -82,6 +81,29 @@ export const {
           }
           return true;
         },
+        //@ts-ignore
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        const DBUSER = await User.findById(user.id);
+        token.role = DBUSER!.role;
+
+        // token.role = User.role; 
+        //  instead of this we hardcode the role for vercel deployment 
+        /// because of edge runtime limitations on moongose we have to hardcode the role
+      }
+      return Promise.resolve(token);
+    },
+    //@ts-ignore
+    async session({ session, token }) {
+      if (token) {
+        //@ts-ignore
+        session.user.id = token.id;
+        //@ts-ignore
+        session.user.role = token.role;
+      }
+      return session;
+    },
         ...authConfig.callbacks,
       },
 
