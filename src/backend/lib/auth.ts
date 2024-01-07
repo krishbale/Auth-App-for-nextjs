@@ -81,27 +81,18 @@ export const {
           }
           return true;
         },
-        //@ts-ignore
-    async jwt({ token, user }) {
-      if (user) {
-        await dbConnect();
-        const DBUSER = await User.findOne({ email: user.email });
-        token.id = user.id;
-        token.role = DBUSER!.role;
-     
-      }
-      return Promise.resolve(token);
-    },
-    //@ts-ignore
-    async session({ session, token }) {
-      if (token) {
-        //@ts-ignore
-        session.user.id = token.id;
-        //@ts-ignore
-        session.user.role = token.role;
-      }
-      return session;
-    },
+         //@ts-ignore
+      async jwt({ token, user }) {
+        if (user) {
+          await dbConnect();
+          const DBUSER = await User.findOne({ email: user.email });
+          token.id = user.id;
+          token.role = DBUSER!.role;
+       
+        }
+        return Promise.resolve(token);
+      },
+  
         ...authConfig.callbacks,
       },
 

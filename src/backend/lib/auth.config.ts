@@ -1,4 +1,5 @@
-
+// import dbConnect from "./dbconnect";
+// import User from "../models/user";
 export const 
 authConfig = {
   pages: {
@@ -8,7 +9,17 @@ authConfig = {
   providers: [],
   callbacks: {
     
-
+     
+      //@ts-ignore
+      async session({ session, token }) {
+        if (token) {
+          //@ts-ignore
+          session.user.id = token.id;
+          //@ts-ignore
+          session.user.role = token.role;
+        }
+        return session;
+      },
 
     //@ts-ignore
     authorized({ auth, request }) {
