@@ -84,13 +84,11 @@ export const {
         //@ts-ignore
     async jwt({ token, user }) {
       if (user) {
+        await dbConnect();
+        const DBUSER = await User.findOne({ email: user.email });
         token.id = user.id;
-        const DBUSER = await User.findById(user.id);
         token.role = DBUSER!.role;
-
-        // token.role = User.role; 
-        //  instead of this we hardcode the role for vercel deployment 
-        /// because of edge runtime limitations on moongose we have to hardcode the role
+     
       }
       return Promise.resolve(token);
     },
