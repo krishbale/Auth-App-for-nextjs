@@ -4,18 +4,13 @@ const page = () => {
   return (
     <div>
       <div>
-        <h1>Next js Authentication</h1>
-        <h2>Use Credentials for route: /admin</h2>
+        <h2>Demo credentials</h2>
         <p>Username:<strong>balkrishna</strong></p>
         <p>Password:<strong>password</strong></p>
-
+        <br />
+        <p>Register with credentials for  author/admin/user role</p>
       </div>
-      <div>
-        <h2>Use Github sign in for route /author</h2>
-      </div>
-      <div>
-        <h2>Or use google sign in only for user level access</h2>
-      </div>
+   
     </div>
   )
 }
