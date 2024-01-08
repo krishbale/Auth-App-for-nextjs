@@ -1,10 +1,34 @@
+
+.hidden{
+  display: none;
+}
+.carosel{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.buttoncontainer{
+  display: flex;
+  justify-content: space-between;
+
+/* background-color: red; */
+}
+.prevbutton{
+
+}
+.nextbutton{
+
+}
+
 .travelcontainer {
   display: flex;
-  overflow-y: scroll;
+  overflow: hidden;
+  overflow-x: auto;
   scrollbar-gutter: stable both-edges;
-  flex-direction: column;
+  /* flex-direction: column; */
+  /* flex-direction: row; */
   max-height: 80vh;
-  max-width: 300px;
+  /* max-width: auto; */
   gap: 1rem;
   padding: 1.5rem;
   border-width: 1px;
@@ -13,7 +37,7 @@
 }
 
 .travelcontainer::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
 }
 @media (max-width: 739px) {
   .travelcontainer {

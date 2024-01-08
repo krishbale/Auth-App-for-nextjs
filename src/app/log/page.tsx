@@ -9,8 +9,9 @@ const page = () => {
         
         {/* traveltimeline */}
         <Travel />
+
        {/* timelinefor log */}
-       <Timeline />
+       {/* <Timeline /> */}
        
       </div>
     </>

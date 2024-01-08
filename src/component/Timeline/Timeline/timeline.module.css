@@ -1,6 +1,6 @@
 /* Timeline Container */
 .timelinecontainer {
-  /* background-color: blue; */
+  background-color: blue;
   overflow: hidden;
   overflow-y: auto;
   max-height: 50vh;
