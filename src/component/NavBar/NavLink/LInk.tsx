@@ -12,6 +12,10 @@ const links = [
     path: "/",
   },
   {
+    title: "Log",
+    path: "/log",
+  },
+  {
     title: "Admin",
     path: "/admin",
   },
@@ -19,6 +23,7 @@ const links = [
     title: "Author",
     path: "/author",
   },
+ 
   {
     title: "Contact",
     path: "/contact",
@@ -51,7 +56,7 @@ const Links = ({session}:any) => {
       </div>
       <Image
         className={styles.menuButton}
-        src="/menu.png"
+        src={"https://img.icons8.com/dotty/80/xbox-menu.png"}
         alt="img"
         width={30}
         height={30}

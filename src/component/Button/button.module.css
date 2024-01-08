@@ -1,0 +1,22 @@
+
+.button{
+    width: 100%;
+    flex: .2;
+    padding: 20px;
+    min-width: 120px;
+    cursor: pointer;
+    border: none;
+    line-height: 27px;
+    cursor: pointer;
+    outline: none;
+    padding: 1 1rem;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 700;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: #5377ec;
+  
+  
+  }
+  

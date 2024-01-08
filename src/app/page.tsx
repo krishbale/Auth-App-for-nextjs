@@ -1,7 +1,8 @@
 import React from "react";
 import style from "./page.module.css";
-import { symlink } from "fs";
-const page = () => {
+import Button from "@/component/Button/Button";
+const Page = () => {
+
   return (
     <>
       <div className={style.container}>
@@ -13,12 +14,12 @@ const page = () => {
             and we will provide famous and popular travel stories from all over
             the world
           </p>
-        <button className={style.button}>Get Started</button>
 
+       <Button where={'/log'} name={'Get Started'} />
         </div>
       </div>
     </>
   );
 };
 
-export default page;
+export default Page;
