@@ -5,9 +5,18 @@
   }
   
   .logout {
-    padding: 10px;
+    padding: .8rem 2rem;
+    color: #fff;
+    font-size: 18px;
+    font-family: var(--font-family);
+    font-weight: 300;
+    line-height: 25px;
+    background: #5377ec;
+    /* background-color: #ff4820; */
+    border: 0;
+    outline: none;
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
   }
   
   .menuButton,

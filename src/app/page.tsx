@@ -1,18 +1,24 @@
-import React from 'react'
-
+import React from "react";
+import style from "./page.module.css";
+import { symlink } from "fs";
 const page = () => {
   return (
-    <div>
-      <div>
-        <h2>Demo credentials</h2>
-        <p>Username:<strong>balkrishna</strong></p>
-        <p>Password:<strong>password</strong></p>
-        <br />
-        <p>Register with credentials for  author/admin/user role</p>
-      </div>
-   
-    </div>
-  )
-}
+    <>
+      <div className={style.container}>
+        <div className={style.imgContainer}></div>
+        <div className={style.textContainer}>
+          <p className={style.title}>Discover Adventures</p>
+          <p className={style.description}>
+            We help you find wonderful trips experience and great vacation place
+            and we will provide famous and popular travel stories from all over
+            the world
+          </p>
+        <button className={style.button}>Get Started</button>
 
-export default page
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default page;

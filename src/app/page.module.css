@@ -1,58 +1,69 @@
 .container {
   display: flex;
   gap: 100px;
-  background-color: red;
+  min-height: 60vh;
 }
 
 .textContainer {
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 50px;
 }
 
 .title{
-  font-size: 96px;
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 75px;
+  letter-spacing: -.04em;
 }
 
 .desc{
   font-size: 20px;
 }
 
-.buttons{
-  display: flex;
-  gap: 20px;
-}
+
 
 .button{
+  width: 100%;
+  flex: .2;
   padding: 20px;
   min-width: 120px;
   cursor: pointer;
   border: none;
+  line-height: 27px;
+  cursor: pointer;
+  outline: none;
+  padding: 0 1rem;
   border-radius: 5px;
-}
+  color: #fff;
+  font-weight: 700;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  /* background: #ff4820; */
+  background: #5377ec;
 
-.button:first-child{
-  background-color: var(--btn);
-  color: var(--text);
-}
 
-.brands{
-  width: 500px;
-  height: 50px;
-  position: relative;
-  filter: grayscale(1);
 }
 
 .imgContainer {
   flex: 1;
   position: relative;
+  overflow: hidden;
+  margin: 8px;
+  padding: 20vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('https://travelpoint.co.nz/wp-content/uploads/2018/08/1.jpg');
+
 }
 
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;
     text-align: center;
+    gap: 10px;
   }
 
   .buttons{
@@ -62,9 +73,18 @@
 
 @media (max-width: 768px) {
   .title {
-    font-size: 64px;
+    font-size: 32px;
   }
-
+  .textContainer{
+    gap: 10px;
+  }
+  .imgContainer {
+    margin: 2px;
+    padding: 10vh;
+  }
+  .desc{
+    font-size: 5px;
+  }
   .brands{
     width: 100%;
   }
