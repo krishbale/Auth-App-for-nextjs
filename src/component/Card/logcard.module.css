@@ -1,17 +1,19 @@
 
 .timeline {
     display: flex;
+    display: flex;
+    flex-direction: column-reverse;
     justify-content: end;
-    /* background-color: red; */
     gap: 1rem;
     padding: 1.5rem;
+    max-width: 400px;
+
   }
   
   /* Card container */
   .card {
     /* background-color: wheat; */
     position: relative;
-    max-width: 400px;
   }
   
   /* setting padding based on even or odd */

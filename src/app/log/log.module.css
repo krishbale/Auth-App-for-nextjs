@@ -8,3 +8,8 @@
 
 
 
+@media (max-width: 739px) {
+  .timelinecontainer {
+    /* display: none; */
+  }
+}

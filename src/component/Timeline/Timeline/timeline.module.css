@@ -1,21 +1,24 @@
 /* Timeline Container */
 .timelinecontainer {
-  background-color: blue;
-  overflow: hidden;
-  overflow-y: auto;
-  max-height: 50vh;
-  width: 100%;
+  overflow-y: scroll;
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  /* flex: 1; */
+  grid-auto-flow: row dense;
+
+  /* flex-direction: column-reverse; */
+  max-height: 80vh;
+  width: 400px;
+  display: grid;
+}
+.timelinecontainer::-webkit-scrollbar {
+  display: none;
 }
 @media (max-width: 1024px) {
   .timelinecontainer {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    /* grid-template-columns: repeat(1, minmax(0, 1fr)); */
   }
 }
 @media (max-width: 739px) {
   .timelinecontainer {
-    display: none;
+    /* display: none; */
   }
 }

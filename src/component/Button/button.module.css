@@ -1,12 +1,12 @@
 
 .button{
-    width: 100%;
-    flex: .2;
+    /* width: 100%; */
+    flex: .3;
     padding: 20px;
-    min-width: 120px;
+    min-width: 20px;
     cursor: pointer;
     border: none;
-    line-height: 27px;
+    line-height: 2px;
     cursor: pointer;
     outline: none;
     padding: 1 1rem;

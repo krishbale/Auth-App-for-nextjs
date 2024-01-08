@@ -1,6 +1,7 @@
 import React from 'react'
 import style from './travelcard.module.css'
 import Image from 'next/image'
+import Button from '../Button/Button';
 const TravelCard = ({item,index,slide}:any) => {
   let value;
 
@@ -21,7 +22,7 @@ const TravelCard = ({item,index,slide}:any) => {
         <div>
           <p>Sep 26, 2021</p>
           <h3>Kathmandu</h3>
-          <p>View Details</p>
+          <Button where={'/log/Kathmandu'} name={'View Details'} ></Button>
         </div>
       </div>
     </div>
