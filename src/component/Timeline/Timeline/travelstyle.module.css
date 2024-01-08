@@ -1,0 +1,25 @@
+.travelcontainer {
+  display: flex;
+  overflow-y: scroll;
+  scrollbar-gutter: stable both-edges;
+  flex-direction: column;
+  max-height: 80vh;
+  max-width: 300px;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-width: 1px;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.travelcontainer::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 739px) {
+  .travelcontainer {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    padding: auto;
+    margin: auto;
+  }
+}
