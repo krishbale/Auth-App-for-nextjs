@@ -1,8 +1,8 @@
 'use client'
 import React, { useEffect, useRef, useState } from "react";
 import style from "./travelstyle.module.css";
-import TravelCard from "../../Card/Travel";
 import {arr} from '@/backend/lib/data'
+import CarouselContent from "@/component/CarouselWrapper/CarouselContent";
 const Travel = () => {
   
   const [slide, setSlide] = useState([0,1,2]);
@@ -26,8 +26,7 @@ const Travel = () => {
 
     <div className={style.travelcontainer} >
       {arr.map((item, index) => (
-        <TravelCard item={item} key={index} slide={slide}  index={index}    />
-
+        <CarouselContent item={item} key={index} slide={slide}  index={index}    />
       ))}
     </div>
   <div  className={style.buttoncontainer}>

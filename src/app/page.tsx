@@ -14,7 +14,6 @@ const Page = () => {
             and we will provide famous and popular travel stories from all over
             the world
           </p>
-
        <Button where={'/log'} name={'Get Started'} />
         </div>
       </div>

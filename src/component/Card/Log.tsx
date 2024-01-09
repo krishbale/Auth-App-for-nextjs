@@ -1,10 +1,17 @@
 import React from 'react'
 import style from './logcard.module.css'
-const LogCard = ({item,index}:any) => {
+const LogCard = ({item,index,isLastCard}:any) => {
+  const isFirstCard = index === 0;
+  const isEven = (index + 1) % 2 === 0;
+  const className = style.card +
+          `${isFirstCard ? style.cardFirst : ''} ` +
+          `${isEven ? style.cardEven : style.cardOdd} ` +
+          `${isLastCard ? (isEven ? style.cardLastEven : style.cardLastOdd) : ''}`;
   return (
+
     <div key={index} className={style.timeline}>
     <div className={style.outer}>
-      <div className={style.card}>
+      <div style={{position:"relative"}} className={className.trim()}>
         <div className={style.info}>
           <h3 className={style.title}>Day {item}</h3>
           <p>

@@ -1,16 +1,17 @@
 /* Timeline Container */
 .timelinecontainer {
+  display: flex;
+  align-items: center  ;
+  flex-direction: column;
   overflow-y: scroll;
-  display: grid;
-  grid-auto-flow: row dense;
-
-  /* flex-direction: column-reverse; */
-  max-height: 80vh;
-  width: 400px;
-  display: grid;
+  max-height:70vh;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, #6dd5ed, #2193b0);
 }
 .timelinecontainer::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
 }
 @media (max-width: 1024px) {
   .timelinecontainer {
