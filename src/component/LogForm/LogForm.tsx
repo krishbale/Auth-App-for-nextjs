@@ -10,6 +10,8 @@ const LogForm = () => {
         <textarea placeholder='Log Something........' className={style.logdescription} id="content" />
         <button className={style.logbutton} type="submit">Submit</button>
       </form>
+
+      
     </div>
   )
 }

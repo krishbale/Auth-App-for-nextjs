@@ -16,14 +16,14 @@
 .prevbutton , .nextbutton{
   width: 100%;
     flex: .2;
-    padding: 20px;
+    /* padding: 20px; */
     min-width: 120px;
     cursor: pointer;
     border: none;
     line-height: 27px;
     cursor: pointer;
     outline: none;
-    padding: 1 1rem;
+    /* padding: 1 1rem; */
     border-radius: 5px;
     color: #fff;
     font-weight: 700;
@@ -50,13 +50,19 @@
 }
 
 .travelcontainer::-webkit-scrollbar {
-  /* display: none; */
+  display: none;
 }
 @media (max-width: 739px) {
   .travelcontainer {
     display: grid;
+    max-height: 50vh;
+    overflow-y: hidden;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    padding: auto;
+    padding: 1rem;
     margin: auto;
+    border-width: none;
+    /* background-color: r  ed; */
+    border :none;
+    /* border-width: 1px; */
   }
 }

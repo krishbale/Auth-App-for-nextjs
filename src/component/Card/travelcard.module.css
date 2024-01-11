@@ -32,3 +32,8 @@
       
   }
   
+  @media (max-width: 739px) {
+    .travelcard{
+      border: none;
+    }
+  }

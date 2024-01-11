@@ -1,103 +1,123 @@
-
 .timeline {
   gap: 1rem;
   /* padding: 1.5rem; */
   max-width: auto;
-  }
-    .card {
-      padding: auto;
-      /* background-color: red; */
-      border-radius: 10px;
-      position: relative;
-      display: flex;
-    }
-  
-  .cardOdd {
-    /* background-color: RED; */
-    padding: 7rem 0 7rem 7rem;
-  }
-  
-  .cardEven {
-    padding: 7rem 7rem 7rem 0;
-  }
+}
 
-  .card::before {
-    content: "";
-    position: absolute;
-    width: 50%;
-    border: solid orangered;
-  }
-  
-  .cardOdd::before {
-    left: 0px;
-    top: -4.5px;
-    bottom: -4.5px;
-    border-width: 5px 0 5px 5px;
-    border-radius: 50px 0 0 50px;
-  }
-  
-  .cardEven::before {
-    right: 0;
-    top: 0;
-    bottom: 0;
-    border-width: 5px 5px 5px 0;
-    border-radius: 0 50px 50px 0;
-  }
-  
-  .cardFirst::before {
-    border-top: 0;
-    border-top-left-radius: 0;
-    left: 0px;
-    top: -4.5px;
-    bottom: -4.5px;
-    border-width: 5px 0 5px 5px;
-    border-radius: 50px 0 0 50px;
-  }
-  
-  .cardLastOdd::before {
+.card {
+  /* padding: auto; */
+  /* background-color: red; */
+  border-radius: 10px;
+  position: relative;
+  /* color: ##5377ec; */
+  display: flex;
+  font-size: 18px;
+  font-weight: 100;
+  line-height: 48px;
+  /* letter-spacing: -0.04em; */
+}
 
-    border-bottom: 0;
-    border-bottom-left-radius: 0;
-  }
-  
-  .cardLastEven::before {
+.cardOdd {
+  /* background-color: RED; */
+  padding: 0.5rem 0 0.5rem 0.5rem;
+}
 
-    border-bottom: 0;
-    border-bottom-right-radius: 0;
-  } 
-  
-  .info {
-    display: flex;
-    flex-direction: column;
-    /* background: #333; */
-    /* color: gray; */
-    /* border-radius: 10px; */
-    padding: 10px;
-  }
-  
-  .title {
-    color:  orangered;
+.cardEven {
+  padding: 0.5rem 0.5rem 0.5rem 0;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  border: solid #5377ec;
+}
+
+.cardOdd::before {
+  left: 0px;
+  top: -4.5px;
+  bottom: -4.5px;
+  border-width: 5px 0 5px 5px;
+  border-radius: 50px 0 0 50px;
+}
+
+.cardEven::before {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-width: 5px 5px 5px 0;
+  border-radius: 0 50px 50px 0;
+}
+
+.cardFirst::before {
+  border-top: 0;
+  border-top-left-radius: 0;
+  left: 0px;
+  top: -4.5px;
+  bottom: -4.5px;
+  border-width: 5px 0 5px 5px;
+  border-radius: 50px 0 0 50px;
+}
+
+.cardLastOdd::before {
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+}
+
+.cardLastEven::before {
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  /* background: #333; */
+  /* color: gray; */
+  /* border-radius: 10px; */
+  padding: 10px;
+}
+
+.title {
+  color: #5377ec;
+  position: relative;
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 999px;
+  border: 3px solid #5377ec;
+}
+
+.cardEven > .info > .title {
+  text-align: right;
+}
+
+.cardOdd > .info > .title::before {
+  left: -45px;
+}
+
+.cardEven > .info > .title::before {
+  right: -45px;
+}
+@media (max-width: 739px) {
+
+  .card {
+    padding: auto;
+    /* background-color: red; */
+    border-radius: 10px;
     position: relative;
+    /* color: ##5377ec; */
+    display: flex;
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 30px;
+    letter-spacing: -0.04em;
   }
-  
-   .title::before {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: white;
-    border-radius: 999px;
-    border: 3px solid  orangered;
-  }
-  
-  .cardEven > .info > .title {
-    text-align: right;
-  }
-  
-  .cardOdd > .info > .title::before {
-    left: -45px;
-  }
-  
-  .cardEven > .info > .title::before {
-    right: -45px;
-  } 
+
+
+}

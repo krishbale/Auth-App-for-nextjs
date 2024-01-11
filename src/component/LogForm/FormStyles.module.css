@@ -32,3 +32,28 @@
   color: white;
   box-shadow: 0 .75rem .5rem -.5rem hsl(233, 91%, 46%);
 }
+
+@media (max-width: 739px) {
+ .logform{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: auto;
+   margin: 1px;
+ }
+ .logday{
+   width: 100%;
+   padding: auto;
+   margin: 1px;
+ }
+ .logdescription{
+   width: 100%;
+   padding: auto;
+   margin: 1px;
+ }
+ .logbutton{
+   width: 100%;
+   padding: auto;
+   margin: 1px;
+ } 
+}

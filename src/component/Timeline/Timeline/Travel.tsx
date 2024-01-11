@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import style from "./travelstyle.module.css";
 import {arr} from '@/backend/lib/data'
 import CarouselContent from "@/component/CarouselWrapper/CarouselContent";
+import LogForm from "@/component/LogForm/LogForm";
 const Travel = () => {
   
   const [slide, setSlide] = useState([0,1,2]);
@@ -25,7 +26,7 @@ const Travel = () => {
     <div className={style.carousel}>
 
     <div className={style.travelcontainer} >
-      {arr.map((item, index) => (
+      {arr.reverse().map((item, index) => (
         <CarouselContent item={item} key={index} slide={slide}  index={index}    />
       ))}
     </div>
@@ -37,6 +38,8 @@ const Travel = () => {
         Next
       </button>
   </div>
+  <LogForm />
+
     </div>
 
   );
