@@ -1,129 +1,34 @@
-.formContainer {
-  margin-top: 1.3rem;
+.logform{
   display: flex;
-  flex-direction: row;
-    border-radius: 8px;
-    width: auto;
-    height: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
+  flex-direction: column;
   
-  .label {
-    margin: 2rem;
-    margin-bottom: 5px;
-    display: block;
-  }
+}
+.logday{
+  flex: 1 1 10ch;
+  margin: .5rem;
+  border: none;
+  background: hsl(0 0% 93%);
+  border-radius: .25rem;
+  padding: .75rem 1rem;
+
   
-  .input,
-  .textarea {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .buttonContainer {.formContainer {
-    margin-top: 1.3rem;
-    display: flex;
-    flex-direction: column; /* Change to column for better mobile view */
-    align-items: center; /* Center items for smaller screens */
-    border-radius: 8px;
-    width: auto;
-    height: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 500px; /* Max width for larger screens */
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .label {
-    margin: 1rem; /* Reduced margin for smaller screens */
-    margin-bottom: 5px;
-    display: block;
-  }
-  
-  .input,
-  .textarea {
-    width: 100%; /* Full width inputs for smaller screens */
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .buttonContainer {
-    padding: 1rem; /* Adjusted padding */
-    width: 100%; /* Full width for smaller screens */
-    display: flex;
-    flex-direction: column; /* Stack buttons vertically on smaller screens */
-    gap: 10px;
-  }
-  
-  .button,
-  .editButton {
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .button:hover {
-    background-color: #4caf50;
-    color: #fff;
-  }
-  
-  .editButton {
-    background-color: #2196F3;
-    color: #fff;
-  }
-  
-  /* Media Queries for larger screens */
-  @media (min-width: 768px) {
-    .formContainer {
-      flex-direction: row;
-      max-width: 700px;
-    }
-  
-    .label {
-      margin: 2rem;
-    }
-  
-    .buttonContainer {
-      flex-direction: row;
-      padding: 2rem;
-    }
-  
-    .button,
-    .editButton {
-      padding: 20px;
-      flex-grow: 1;
-    }
-  }
-  
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px; /* Adding a gap between buttons */
-  }
-  
-  .button {
-    padding: 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    flex-grow: 1;
-  }
-  
-  .button:hover {
-    background-color: #4caf50;
-    color: #fff;
-  }
-  
-  .editButton {
-    padding: 20px;
-    background-color: #2196F3;
-  }
-  
+}
+.logdescription{
+  flex: 1 1 10ch;
+  border: none;
+  background: hsl(0 0% 93%);
+  border-radius: .25rem;
+  padding:  .75rem 1rem;
+  align-items: center;
+
+}
+.logbutton{
+  margin-top: 1rem;;
+  border: none;
+  background: hsl(0 0% 93%);
+  border-radius: .25rem;
+  padding: .75rem .75rem;
+  background: #5377ec;
+  color: white;
+  box-shadow: 0 .75rem .5rem -.5rem hsl(233, 91%, 46%);
+}

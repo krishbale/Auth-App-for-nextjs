@@ -1,23 +1,17 @@
-import React from 'react';
-import styles from './FormStyles.module.css'; // Assuming your CSS module is named FormStyles.module.css
-
-const MyForm = () => {
+import React from 'react'
+import style from './FormStyles.module.css'
+const LogForm = () => {
   return (
-    <div >
-      <form className={styles.formContainer}>
-        <label htmlFor="day" className={styles.label}>Enter Day:</label>
-        <input type="text" id="day" name="day" className={styles.input} required />
-
-        <label htmlFor="description" className={styles.label}>Enter Description:</label>
-        <textarea id="description" name="description" rows={4} className={styles.textarea} required></textarea>
-
-        <div className={styles.buttonContainer}>
-          <button type="submit" className={styles.button}>Submit</button>
-          <button type="button" className={`${styles.button} ${styles.editButton}`}>Edit</button>
-        </div>
+    <div>
+      <form className={style.logform}>
+        {/* <label htmlFor="title">Enter Log day</label> */}
+        <input className={style.logday} placeholder='Enter log day' type="text" id="title" />
+        {/* <label htmlFor="content">Enter your log</label> */}
+        <textarea placeholder='Log Something........' className={style.logdescription} id="content" />
+        <button className={style.logbutton} type="submit">Submit</button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default MyForm;
+export default LogForm

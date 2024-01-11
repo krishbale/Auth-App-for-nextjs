@@ -6,19 +6,21 @@ import Travel from "@/component/Timeline/Timeline/Travel";
 import TravelCard from "@/component/Card/Travel";
 import { arr } from "@/backend/lib/data";
 import MyForm from "@/component/LogForm/LogForm";
+import LogForm from "@/component/LogForm/LogForm";
 const page = ({ params }: any) => {
   const slug = params.slug;
   return (
     <>
       <div className={style.slug}>
-      <TravelCard />
-     
-      <div className={style.formgroup}>
-      <Timeline />
-      <MyForm />
-      </div>
-        
-        
+        <div className="">
+          <TravelCard item={arr[0]} />
+          <LogForm />
+        </div>
+        <div className="">
+          <Timeline />
+         
+        </div>
+       
       </div>
     </>
   );

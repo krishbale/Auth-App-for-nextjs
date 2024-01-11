@@ -9,23 +9,26 @@
     min-width: 200px;
     overflow: hidden;
   }
-  
+
   .travelcontainer {
     width: 100%;
     padding: 2px;
-    cursor: pointer;
     position: relative;
 
   
   }
   .travelcard:active{
-      border: 2px solid red;
+      border: 2px solid #0c1946;
       
   }
+  .travelcard:hover{
+    border: 2px solid #5377ec;
+    
+}
   .travelcard{
       position: relative;
       cursor: pointer;
-      border: 2px solid #333;
+      border: 1px solid #0c1946;
       
   }
   

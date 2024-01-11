@@ -9,7 +9,7 @@ const page = () => {
       <div className={style.main}>
         
         <Travel />
-    {/* <MyForm /> */}
+   
        
       </div>
     </>

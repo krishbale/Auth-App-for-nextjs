@@ -4,22 +4,25 @@
   align-items: center  ;
   flex-direction: column;
   overflow-y: scroll;
-  max-height:70vh;
-  width: auto;
+  max-height:86vh;
+  /* width: 400px;  */
   border-radius: 8px;
+  scroll-behavior: smooth;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background: linear-gradient(to right, #6dd5ed, #2193b0);
+  /* background: linear-gradient(to right, #6dd5ed, #2193b0); */
 }
 .timelinecontainer::-webkit-scrollbar {
-  /* display: none; */
+  display: none;
 }
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .timelinecontainer {
-    /* grid-template-columns: repeat(1, minmax(0, 1fr)); */
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
-}
+} 
+
 @media (max-width: 739px) {
   .timelinecontainer {
-    /* display: none; */
+    /* display: none; 
   }
 }
+*/
